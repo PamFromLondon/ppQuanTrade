@@ -1,16 +1,18 @@
 QuanTrade: Automated quantitative trading system
 ==================================================
 
-[![Build Status](https://travis-ci.org/Gusabi/ppQuanTrade.png?branch=master)](https://travis-ci.org/Gusabi/ppQuanTrade)
+[![Build Status](https://travis-ci.org/hackliff/ppQuanTrade.png?branch=master)](https://travis-ci.org/hackliff/ppQuanTrade)
 
-**Super Attention!** I'm testing a lot of new things the system will be difficult to run for a few days (but for the best !)
+**Super Attention!** Since I am currently involved on other [ambitious IT
+projects](https://github.com/hivetech), I paused this one for a few months. However development should retake
+by the end of --september-- november, hopefully with new tools and skills!
 
 **Attention!** Project is under early development, use for your own risk.
 
 Overview
 --------
 
-**QuanTrade** is an engine and a set of tools meant to let you easily and intuitively build your own **automated quantitative trading system**.
+**Intuition** is an engine and a set of tools meant to let you easily and intuitively build your own **automated quantitative trading system**.
 It is designed to let financial, developer and scientist dudes (together sounds great) explore, test and deploy market technical hacks.
 
 While the project is still at an early age, you can already write, or use, **signal detection algorithms, and portfolio allocation strategies**.
@@ -21,7 +23,7 @@ tools to mix languages like Python, node.js and R and a financial library.
 You will find some goodies like machine learning forecast, markowitz portfolio optimization, genetic optimization, sentiment analysis from twitter, ...
 
 
-![Dashboard](https://raw.github.com/Gusabi/ppQuanTrade/master/QuantDashboard.png)
+![Dashboard](https://raw.github.com/hivetech/hivetech.github.io/master/images/QuantDashboard.png)
 
 
 Features
@@ -37,7 +39,7 @@ Features
 * Message architecture for interprocess communication and distributed computing, with a central remote console controling everything
 * Ressources to learn about quantitative finance (cleaning it, coming soon)
 * Neuronquant is also a financial library, with common used trading functions, graphics, ... used for example to solve Coursera econometrics assignments
-* MySQL and SQLite data management for optimized financial storage and access 
+* Easy to use data management, powered by mysql 
 * Advanced computations available: neural networks, natural language processing, genetic optimization, checkout playground directory !
 * Random fancy stuff as well in this directory
 
@@ -50,7 +52,7 @@ You are just a few steps away from algoritmic trading. Follow one of those 3 met
 - Plateform independant with Vagrant  and VMs/containers (http://www.vagrantup.com/):
 
 ```
-$ git clone https://github.com/Gusabi/ppQuanTrade.git
+$ git clone https://github.com/hackliff/intuition.git
 $ sudo apt-get install lxc redir
 $ sudo apt-get update && apt-get dist-upgrade
 $ vagrant plugin install vagrant-lxc
@@ -66,14 +68,14 @@ optionnaly ```BOX_URI``` if you don't have it already on your system)
 - Classic style:
 
 ```
-$ git clone https://github.com/Gusabi/ppQuanTrade.git
+$ git clone https://github.com/hackliff/intuition.git
 $ cd ppQuanTrade && sudo make all
 ```
 
 - Or one liner style (with more installation options, only the first one is required):
 
 ```
-$ export PROJECT_URL=Gusabi/ppQuanTrade
+$ export PROJECT_URL=hackliff/intuition
 $ export INSTALL_PATH=/some/where
 $ export MAKE_TARGET=all
 $ export VIRTUALIZE=false
@@ -83,7 +85,7 @@ $ export PROVIDER=lxc
 And shoot:
 
 ```
-$ wget -qO- https://raw.github.com/Gusabi/Dotfiles/master/utils/apt-git | sudo -E bash
+$ wget -qO- https://raw.github.com/hackliff/Dotfiles/master/utils/apt-git | sudo -E bash
 ```
 
 - Then, in any case, you have to setup a mysql database:
@@ -93,14 +95,14 @@ Edit the script in scripts/installation/createdb.sql and your preferences in
 ppQuanTrade/data/symbols.csv and run:
 
 ```
-$ sudo chown -r $USER $HOME/.quantrade   # Fixes weird issue
-$ sudo chown -r $USER ppQuanTrade/   # Fixes weird issue
+$ sudo chown -R $USER $HOME/.quantrade   # Fixes weird issue
+$ sudo chown -R $USER ppQuanTrade/       # Idem 
 $ make database
 ```
 
 At any moment you can change or edit symbols files and run it again for update.
 
-- QuanTrade is able to send to your android device(s) notifications, using
+- Intuition is able to send to your android device(s) notifications, using
   NotifyMyAndroid. However you will need an API key, available for free with
   the trial version of the application. Super simple to setup, check their
   website.
@@ -114,13 +116,16 @@ Getting started
 You can configure the soft trough default.json and plugins.json in
 ~/.quantrade. Then run:
 
-```./backtest.py --initialcash 10000 --tickers random,6 --algorithm DualMA 
-	 	--manager Fair --exchange paris --start 2005-01-10 --end 2010-07-03```
+```
+./application/app.py --initialcash 50000 --tickers random,10 \
+        --loglevel CRITICAL --algorithm BuyAndHold --manager Constant --start 2011-05-10 \
+        --frequency daily --database backtest --exchange paris --source DBPriceSource
+```
 
 Or in realtime mode (Broken, I am improving it):
 
-```./backtest.py --initialcash 100000 --tickers EUR/USD,EUR/GBP --algorithm StdBased 
-		--manager Equity --frequency minute --exchange forex --live```
+```./application/app.py --initialcash 100000 --tickers EUR/USD,EUR/GBP --algorithm StdBased 
+		--manager Equity --frequency minute --exchange forex --live --source EquitiesLiveSource ```
 
 More examples available in scripts/run_app.sh
 
@@ -196,9 +201,9 @@ class BuyAndHold(QuantitativeTrading):
 Resources for Newcomers
 -----------------------
 
-* [The Wiki](https://github.com/Gusabi/ppQuanTrade/wiki)
-* [Contributing](https://github.com/Gusabi/ppQuanTrade/wiki/Contribution)
-* [Tutorial](https://github.com/Gusabi/ppQuanTrade/wiki/How-to-become-a-ninja-trader)
+* [The Wiki](https://github.com/hackliff/intuition/wiki)
+* [Contributing](https://github.com/hackliff/intuition/wiki/Contribution)
+* [Tutorial](https://github.com/hackliff/intuition/wiki/How-to-become-a-ninja-trader)
 
 
 Credits
